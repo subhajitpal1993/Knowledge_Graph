@@ -64,7 +64,7 @@
     }
 
     plot(query, k, n, p) {
-        fetch("http://127.0.0.1:5001/search/" + k.toString() + "/" + n.toString() + "/" + p.toString() + "/" + query).then(res => res.json()).then(data => {
+        fetch("http://127.0.0.1:5000/search/" + k.toString() + "/" + n.toString() + "/" + p.toString() + "/" + query).then(res => res.json()).then(data => {
             ReactDOM.render(
                 <ForceGraph3D
                     graphData={data}
