@@ -8,14 +8,14 @@ with open("requirements.txt") as f:
     required = f.read().splitlines()
 
 setup(
-    name="kgsearch",
+    name="Knowledge_Graph",
     version="0.0.1",
-    author="Raphael Sourty",
-    author_email="raphael.sourty@gmail.com",
+    author="Subhajit Pal",
+    author_email="subhajitpal@gmail.com",
     description="Minimalist visual search engine for Knowledge Graph.",
     long_description_content_type="text/markdown",
     license="BSD-3",
-    url="https://github.com/raphaelsty/kgsearch",
+    url="https://github.com/subhajitpal1993/Knowledge_Graph",
     package_data={
         "kgsearch": ["web/app.html", "web/style.css", "data/data.csv", "data/metadata.json"]
     },
