@@ -25,7 +25,7 @@ def start(arg, f):
 
         print("🎉 Starting the app.")
         webbrowser.open(os.path.join("file://" + path, "web/app.html"))
-        app.run(debug=True)
+        app.run()
 
     elif arg == "add":
         Search(file=f).save(path=os.path.join(path, "data/search.pkl"))
