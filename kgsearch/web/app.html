@@ -9,8 +9,8 @@
   </div>
 
   <div class="gpt" id="gpt">
-    <p>CONTEXT</p>
-    <input type="button" id="decode" onclick=readText() value="Decode">
+    <p>GPT2-KG -> Click on INFO </p>
+    <input type="button" id="decode" onclick=readText() value="INFO">
     <div id="response"></div>
 
   </div>
@@ -24,22 +24,14 @@
 <script type="text/javascript">
 
 
-	var reader = new FileReader();
-
 	function readText(){
+        text_file = open("C:/Users/subha/AppData/Local/Programs/Python/Python310/lib/site-packages/kgsearch/output.txt", "r")
+        response_str = text_file.read()
+        text_file.close()
 
-
-			var reader = new FileReader();
-
-			reader.onload = function (e) {  
-				var output=e.target.files;
-                
-				document.getElementById('response').innerHTML= output.result;
-                                                         }
-			        reader.readAsText('/home/sysops/.local/lib/python3.8/site-packages/kgsearch/output.txt');
-
-
-	                    } 
+        alert(response_str)
+        document.getElementById('response').innerHTML= response_str;
+    }
 </script>
 
 <script type="text/jsx">
