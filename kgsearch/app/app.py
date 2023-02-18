@@ -10,8 +10,19 @@ from cherche import retrieve
 from flask import Flask
 from flask_cors import CORS, cross_origin
 from sklearn.feature_extraction.text import TfidfVectorizer
+import jinja2
+import sys
+#from document import document
+
+#output_file = "~/.local/lib/python3.8/site-packages/kgsearch/output.txt"
+import openai
+openai.api_key = "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"
 
 __all__ = ["Search", "create_app", "save_metadata"]
+
+node_list=pd.read_csv('~/.local/lib/python3.8/site-packages/kgsearch/node_list.csv',header=0, names=['Node'])
+node_list_v= node_list["Node"].values.tolist()
+
 
 
 def save_metadata(origin, source):
@@ -100,13 +111,35 @@ class Search:
         entities, h_r_t = {}, {}
         prune = collections.defaultdict(int)
 
+        # added
+        global response_str
+        response_str=[]
+        if(query!= ""):
+            response = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=query,
+            temperature=0.7,
+            max_tokens=256,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
+            )
+            response_str = response["choices"][0]["text"].replace("\n", "")
+        else:
+            response_str=""
+        
+
+        
+
         candidates, seen = [], {}
-        for q in query.split(";"):
-            answer = self.retriever(q.strip())[: int(k)]
-            for candidate in answer:
-                if candidate["label"] not in seen:
-                    candidates.append(candidate)
-                    seen[candidate["label"]] = True
+        for q in query.split(" "):
+            if q in node_list_v:
+                answer = self.retriever(q.strip())[: int(k)]
+                for candidate in answer:
+                    if candidate["label"] not in seen:
+                        candidates.append(candidate)
+                        seen[candidate["label"]] = True
+        
 
         for group, e in enumerate(candidates):
 
@@ -176,6 +209,18 @@ class Search:
             ]
 
             nodes = [node for node in nodes if prune[node["id"]] >= p]
+        
+        #print(response_str)
+
+
+        with open('output.txt', 'w') as f:
+            for line in response_str:
+                f.write(line)
+                #f.write('\n')
+
+        
+        #output_div = document.getElementById('gpt')
+        #output_div.innerHTML = render_text_output(response_str)
 
         return {"nodes": nodes, "links": links}
 
