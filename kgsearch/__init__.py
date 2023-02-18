@@ -9,7 +9,7 @@ from .app import Search, create_app, save_metadata
 __all__ = ["app"]
 
 path = os.path.abspath(os.path.dirname(__file__))
-
+print(path)
 
 @click.command("start", short_help="Start the app")
 @click.argument("arg", type=str)
@@ -25,7 +25,7 @@ def start(arg, f):
 
         print("🎉 Starting the app.")
         webbrowser.open(os.path.join("file://" + path, "web/app.html"))
-        app.run()
+        app.run(debug=True)
 
     elif arg == "add":
         Search(file=f).save(path=os.path.join(path, "data/search.pkl"))
