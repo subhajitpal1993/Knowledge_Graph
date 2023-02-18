@@ -1,10 +1,10 @@
 <div align="center">
-  <h1>KGSearch</h1>
+  <h1>KG Engine</h1>
 </div>
 
 ![](kgsearch.gif)
 
-KGSearch is a minimalist tool for searching and viewing entities in a graph and is dedicated to a local environment. The application provides a Python client with three distinct terminal commands: `add, start, open`. The application default proposes to search through the knowledge graph [Countries](https://www.aaai.org/ocs/index.php/SSS/SSS15/paper/view/10257/10026). You can explore the borders we must cross to get from one country to another and see how small the 🌍 is.
+KG Engine is a minimalist tool for searching and viewing entities in a graph and is dedicated to a local environment. The application provides a Python client with three distinct terminal commands: `add, start, open`. The application default proposes to search through the knowledge graph [Countries](https://www.aaai.org/ocs/index.php/SSS/SSS15/paper/view/10257/10026). You can explore the borders we must cross to get from one country to another and see how small the 🌍 is.
 
 ## Installation
 
