@@ -16,11 +16,11 @@ import sys
 
 #output_file = "~/.local/lib/python3.8/site-packages/kgsearch/output.txt"
 import openai
-openai.api_key = "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"
+openai.api_key = "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"
 
 __all__ = ["Search", "create_app", "save_metadata"]
 
-node_list=pd.read_csv('~/.local/lib/python3.8/site-packages/kgsearch/node_list.csv',header=0, names=['Node'])
+node_list=pd.read_csv('C:/Users/subha/AppData/Local/Programs/Python/Python310/lib/site-packages/kgsearch/node_list.csv',header=0, names=['Node'])
 node_list_v= node_list["Node"].values.tolist()
 
 
@@ -210,10 +210,10 @@ class Search:
 
             nodes = [node for node in nodes if prune[node["id"]] >= p]
         
-        #print(response_str)
+        
 
 
-        with open('output.txt', 'w') as f:
+        with open('C:/Users/subha/AppData/Local/Programs/Python/Python310/lib/site-packages/kgsearch/output.txt', 'w') as f:
             for line in response_str:
                 f.write(line)
                 #f.write('\n')
@@ -225,11 +225,15 @@ class Search:
         return {"nodes": nodes, "links": links}
 
 
+
+
+    
 def create_app():
     app = Flask(__name__)
     app.config["JSONIFY_PRETTYPRINT_REGULAR"] = True
     app.config["CORS_HEADERS"] = "Content-Type"
     CORS(app, resources={r"/search/*": {"origins": "*"}})
+
 
     @app.route("/search/<k>/<n>/<p>/<query>", methods=["GET"])
     @cross_origin()
