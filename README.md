@@ -6,11 +6,13 @@
 
 KG Engine is a minimalist tool for searching and viewing entities in a graph and is dedicated to a local environment. The application provides a Python client with three distinct terminal commands: `add, start, open`. The application default proposes to search through the knowledge graph [Countries](https://www.aaai.org/ocs/index.php/SSS/SSS15/paper/view/10257/10026). You can explore the borders we must cross to get from one country to another and see how small the 🌍 is.
 
+
 ## Installation
 
 ```sh
 pip install git+https://github.com/subhajitpal1993/Knowledge_Graph
 ```
+For re-installation pip uninstall kgsearch and Knowledge_Graph-0.0.1.dist-info package
 
 ## ✅ Quick Start
 
